@@ -70,6 +70,7 @@ VAR_TO_UNIT = {
 
 DEFAULT_PRESSURE_LEVELS = [50, 250, 500, 600, 700, 850, 925]
 
+CONSTANT_VARS = ["orography", "lsm", "slt", "lat2d", "lon2d"]
 CONSTANTS = ["orography", "land_sea_mask", "slt", "lattitude", "longitude"]
 
 NAME_LEVEL_TO_VAR_LEVEL = {}

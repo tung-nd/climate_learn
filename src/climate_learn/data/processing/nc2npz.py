@@ -13,7 +13,7 @@ from .era5_constants import (
     DEFAULT_PRESSURE_LEVELS,
     NAME_TO_VAR,
     VAR_TO_NAME,
-    CONSTANTS,
+    CONSTANT_VARS,
 )
 
 HOURS_PER_YEAR = 8736  # 8760 --> 8736 which is dividable by 16
@@ -27,14 +27,14 @@ def nc2np(path, variables, years, save_dir, partition, num_shards_per_year):
         normalize_std = {}
     climatology = {}
 
-    constants_path = os.path.join(path, "constants.nc")
+    constants_path = os.path.join(path, "constants/constants.nc")
     constants_are_downloaded = os.path.isfile(constants_path)
 
     if constants_are_downloaded:
         constants = xr.open_mfdataset(
             constants_path, combine="by_coords", parallel=True
         )
-        constant_fields = [VAR_TO_NAME[v] for v in CONSTANTS if v in VAR_TO_NAME.keys()]
+        constant_fields = [VAR_TO_NAME[v] for v in CONSTANT_VARS if v in VAR_TO_NAME.keys()]
         constant_values = {}
         for f in constant_fields:
             constant_values[f] = np.expand_dims(
