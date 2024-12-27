@@ -30,8 +30,8 @@ dm = cl.data.IterDataModule(
 dm.setup()
 
 # Set up baseline models
-climatology = cl.load_forecasting_module(data_module=dm, preset="climatology")
-persistence = cl.load_forecasting_module(data_module=dm, preset="persistence")
+climatology = cl.load_forecasting_module(data_module=dm, architecture="climatology")
+persistence = cl.load_forecasting_module(data_module=dm, architecture="persistence")
 
 # Evaluate baslines (no training needed)
 trainer = pl.Trainer()
