@@ -27,14 +27,14 @@ denorm = Denormalize(dm)
 denorm_mask = lambda x: denorm(mask(x))
 nearest = cl.load_downscaling_module(
     data_module=dm,
-    preset="nearest-interpolation",
+    architecture="nearest-interpolation",
     train_target_transform=mask,
     val_target_transform=[denorm_mask, denorm_mask, denorm_mask, mask],
     test_target_transform=[denorm_mask, denorm_mask, denorm_mask],
 )
 bilinear = cl.load_downscaling_module(
     data_module=dm,
-    preset="bilinear-interpolation",
+    architecture="bilinear-interpolation",
     train_target_transform=mask,
     val_target_transform=[denorm_mask, denorm_mask, denorm_mask, mask],
     test_target_transform=[denorm_mask, denorm_mask, denorm_mask],
